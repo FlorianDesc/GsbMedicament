@@ -22,7 +22,6 @@ switch ($action) {
 				$_SESSION['erreur'] = true;
 				header("Location: index.php?uc=medicaments&action=formulairemedoc");
 			}
-			var_dump($carac);
 			break;
 		}
 
