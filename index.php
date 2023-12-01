@@ -5,6 +5,10 @@
 
     require_once ('modele/praticien.modele.inc.php');
 
+    require_once ('modele/rapportVisite.modele.inc.php');
+
+    require_once ('modele/rapportVisiteRegion.modele.inc.php');
+
 
     if(!isset($_REQUEST['uc']) || empty($_REQUEST['uc']))
         $uc = 'accueil';
@@ -35,7 +39,7 @@
             }
             break;
         }
-
+        
         case 'medicaments' :
         {   
             if(!empty($_SESSION['login'])){
@@ -45,6 +49,26 @@
             }
             break;
         }
+
+        case 'rapportsregions' :
+            {   
+                if(!empty($_SESSION['login'])){
+                    include("controleur/c_rapportsregions.php");
+                }else{
+                    include("vues/v_accesInterdit.php");
+                }
+                break;
+            }
+
+            case 'rapportvisite' :
+                {   
+                    if(!empty($_SESSION['login'])){
+                        include("controleur/c_saisirrapportvisite.php");
+                    }else{
+                        include("vues/v_accesInterdit.php");
+                    }
+                    break;
+                }
     
         case 'connexion' :
         {   
