@@ -5,9 +5,13 @@
 
     require_once ('modele/praticien.modele.inc.php');
 
-    require_once ('modele/rapportVisite.modele.inc.php');
+    require_once('modele/gestionPraticiens.modele.inc.php');
 
-    require_once ('modele/rapportVisiteRegion.modele.inc.php');
+    require_once('modele/rapportVisite.modele.inc.php');
+
+    require_once('modele/rapportVisiteRegion.modele.inc.php');
+
+
 
 
     if(!isset($_REQUEST['uc']) || empty($_REQUEST['uc']))
@@ -75,13 +79,24 @@
             include("controleur/c_connexion.php");
             break; 
         }
+
+        case 'gestion' : {
+            if(!empty($_SESSION['login']) && $_SESSION['habilitation']>=2){
+                include("controleur/c_gestionPraticiens.php");
+            }
+            else{
+                include("vues/v_accesInterdit.php");
+            }
+            break;
+        }
+
         default :
         {   
             include("vues/v_accueil.php");
             break;
         }
     }
-?>
-<?php include("vues/v_footer.php") ;?>
+
+include("vues/v_footer.php") ;?>
 </body>
 </html>

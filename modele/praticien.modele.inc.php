@@ -6,7 +6,7 @@ include_once 'bd.inc.php';
 
         try{
             $monPdo = connexionPDO();
-            $req = 'SELECT * FROM praticien';
+            $req = 'SELECT  PRA_NUM, PRA_NOM, PRA_PRENOM FROM praticien';
             $res = $monPdo->query($req);
             $result = $res->fetchAll();
             return $result;
