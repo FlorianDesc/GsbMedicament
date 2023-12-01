@@ -28,9 +28,15 @@
                             <a class="nav-link btn-outline-info rounded-pill px-3 fw-bold" href="index.php?uc=accueil">Accueil</a>
                         </li>
 
-                        <li class="nav-item ">
-                            <a class="nav-link btn-outline-info rounded-pill px-3 fw-bold" href="index.php?uc=praticiens&action=formulairepraticien">Praticiens</a>
-                        </li>
+                        <div class="dropdown">
+                            <button class="nav-link btn dropdown-toggle fw-bold" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Médecin
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="index.php?uc=praticiens&action=formulairepraticien">Praticiens</a>
+                                <a class="dropdown-item" href="index.php?uc=gestion&action=gererMedecin">Gérer médecin</a>
+                            </div>
+                        </div>
                         <li class="nav-item ">
                             <a class="nav-link btn-outline-info rounded-pill px-3 fw-bold" href="index.php?uc=medicaments&action=formulairemedc">Médicaments</a>
                         </li>
@@ -38,11 +44,7 @@
                         
                         <li class="nav-item ">
                             <a class="nav-link btn-outline-info rounded-pill px-3 fw-bold" href="index.php?uc=connexion&action=profil">Profil</a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link btn-outline-info rounded-pill px-3 fw-bold" href="index.php?uc=gestion&action=gererMedecin">Gestion</a>
-                        </li>
-                        
+                        </li>                        
                         <li class="nav-item">
                             <a class="nav-link btn-outline-info rounded-pill px-3 fw-bold" href="index.php?uc=connexion&action=deconnexion" onclick="return confirm('Voulez-vous vraiment vous déconnecter ?');">Déconnexion</a>
                         </li>

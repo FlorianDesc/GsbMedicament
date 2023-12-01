@@ -7,7 +7,6 @@ if (!isset($_REQUEST['action']) || empty($_REQUEST['action'])) {
 switch ($action) {
     case 'gererMedecinListe': {
 
-		//$lesPraticiens = getAllNomPraticiensGestion();
 		$cp = getDepartementCollab($_SESSION['matricule']);
 		$dep = cpToNb($cp['COL_CP']);
 		$reg = getRegionCollab($dep);
@@ -15,13 +14,15 @@ switch ($action) {
 		$depDansReg = tableauDepartement($tableauDep);
 
 		$praticiens = getAllInfoPraticienGestion();
-		$praDansReg = praticienDansReg($depDansReg, $praticiens);
+		$praDansReg = medecinDansReg($depDansReg, $praticiens);
 
         include ("vues/v_gererMedecinListe.php");
         break;
     }
 
 	case 'gererMedecinFormulaire': {
+
+
 
         include ("vues/v_gererMedecinFormulaire.php");
         break;

@@ -71,7 +71,7 @@ include_once 'bd.inc.php';
             $nb = substr($cp,0,2);
         }
         else{
-            $nb = "0" . substr($cp,0,1);
+            $nb = substr($cp,0,1);
         }
         return $nb;
     }
@@ -84,12 +84,19 @@ include_once 'bd.inc.php';
         return $tableauDeps;
     }
     
-    function praticienDansReg($lesDep, $praticiens){
+    function medecinDansReg($lesDep, $praticiens){
         $praDansReg = [];
         foreach($praticiens as $praticien){
-            if(array_search(substr($praticien['PRA_CP'],0,2),$lesDep)){
-                $praDansReg[] = $praticien;
+            if($praticien['PRA_CP']>4){
+                if(array_search(substr($praticien['PRA_CP'],0,2),$lesDep)){
+                    $praDansReg[] = $praticien;
+                }
             }
+            else{ 
+                if(array_search(substr($praticien['PRA_CP'],0,1),$lesDep)){
+                    $praDansReg[] = $praticien;
+                } 
+            }           
         }
         return $praDansReg;
     }
@@ -109,10 +116,6 @@ include_once 'bd.inc.php';
             print "Erreur !: " . $e->getMessage();
             die();
         }
-    }
-
-    function getPraticienMemeReg($praticiens){
-        
     }
 
 ?>
