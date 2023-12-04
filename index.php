@@ -64,15 +64,15 @@
                 break;
             }
 
-            case 'rapportvisite' :
-                {   
-                    if(!empty($_SESSION['login'])){
-                        include("controleur/c_saisirrapportvisite.php");
-                    }else{
-                        include("vues/v_accesInterdit.php");
-                    }
-                    break;
+        case 'rapportvisite' :
+            {   
+                if(!empty($_SESSION['login'])){
+                    include("controleur/c_saisirrapportvisite.php");
+                }else{
+                    include("vues/v_accesInterdit.php");
                 }
+                break;
+            }
     
         case 'connexion' :
         {   

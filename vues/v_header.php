@@ -8,8 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/gsb.css">
     <link rel="stylesheet" href="assets/css/custom.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">   
 </head>
 
 <body>
@@ -36,15 +35,14 @@
                             <a class="nav-link btn-outline-info rounded-pill px-3 fw-bold" href="index.php?uc=rapportsregions&action=formulairedate">Rapports régions</a>
                         </li>
 
-                        <div class="dropdown">
-                            <button class="nav-link btn dropdown-toggle fw-bold" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Médecin
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="index.php?uc=praticiens&action=formulairepraticien">Praticiens</a>
-                                <a class="dropdown-item" href="index.php?uc=gestion&action=gererMedecin">Gérer médecin</a>
-                            </div>
-                        </div>
+                        <li class="nav-item ">
+                            <a class="nav-link btn-outline-info rounded-pill px-3 fw-bold" href="index.php?uc=praticiens&action=formulairepraticien">Praticiens</a>
+                        </li>
+
+                        <li class="nav-item ">
+                            <a class="nav-link btn-outline-info rounded-pill px-3 fw-bold" href="index.php?uc=gestion&action=gererMedecinListe">Gérer médecin</a>
+                        </li>
+
                         <li class="nav-item ">
                             <a class="nav-link btn-outline-info rounded-pill px-3 fw-bold" href="index.php?uc=medicaments&action=formulairemedoc">Médicaments</a>
                         </li>
@@ -52,7 +50,7 @@
                             <a class="nav-link btn-outline-info rounded-pill px-3 fw-bold" href="index.php?uc=connexion&action=profil">Profil</a>
                         </li>                        
                         <li class="nav-item">
-                            <a class="nav-link btn-outline-info rounded-pill px-3 fw-bold" href="index.php?uc=connexion&action=deconnexion" onclick="return confirm('Voulez-vous vraiment vous déconnecter ?');">Déconnexion</a>
+                            <a class="nav-link btn-outline-info rounded-pill px-3 fw-bold" href="index.php?uc=connexion&action=deconnexion" onClick="return confirm('Voulez-vous vraiment vous déconnectez ?');">Déconnexion</a>
                         </li>
                     </ul>
                 </div>
