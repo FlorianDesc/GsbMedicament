@@ -18,6 +18,22 @@ include_once 'bd.inc.php';
         }
     }
 
+    function getInfoPraticien($idPra){
+
+        try{
+            $monPdo = connexionPDO();
+            $req = 'SELECT * FROM praticien WHERE PRA_NUM = "' . $idPra . '"';
+            $res = $monPdo->query($req);
+            $result = $res->fetch();
+            return $result;
+        } 
+
+        catch (PDOException $e){
+            print "Erreur !: " . $e->getMessage();
+            die();
+        }
+    }
+
     function getAllInfoPraticienGestion(){
 
         try{
@@ -107,6 +123,42 @@ include_once 'bd.inc.php';
         try{
             $monPdo = connexionPDO();
             $req = 'SELECT NoDEPT FROM departement WHERE REG_CODE = "' . $reg . '"';
+            $res = $monPdo->query($req);
+            $result = $res->fetchAll();
+            return $result;
+        } 
+
+        catch (PDOException $e){
+            print "Erreur !: " . $e->getMessage();
+            die();
+        }
+    }
+
+    function insertNewInfoPraticien($idpra, $nom, $prenom, $adresse, $cp, $ville, $cn, $cc, $tp){
+
+        try{
+            $monPdo = connexionPDO();
+            $req = 'UPDATE praticien SET PRA_NOM=:nom, PRA_PRENOM=:prenom, PRA_ADRESSE=:adresse, PRA_CP=:cp, PRA_VILLE=:ville, PRA_COEFNOTORIETE=:cn, PRA_COEFCONFIANCE=:cc, TYP_CODE=:tp WHERE PRA_NUM="' . $idpra . '"';
+
+            $res = $monPdo->prepare($req);
+            $param = array(':nom'=>$nom, ':prenom'=>$prenom, ':adresse'=>$adresse, ':cp'=>$cp, ':ville'=>$ville, ':cn'=>$cn, ':cc'=>$cc, ':tp'=>$tp,);
+
+            
+            $result = $res->execute($param);
+            return $result;
+        } 
+
+        catch (PDOException $e){
+            print "Erreur !: " . $e->getMessage();
+            die();
+        }
+    }
+
+    function getAllTypePraticien(){
+
+        try{
+            $monPdo = connexionPDO();
+            $req = 'SELECT TYP_CODE FROM type_praticien';
             $res = $monPdo->query($req);
             $result = $res->fetchAll();
             return $result;

@@ -27,6 +27,16 @@
                     </select>
                     <input class="btn btn-info text-light valider" type="submit" value="Afficher les informations">
                 </form>
+                <?php
+                if(isset($_SESSION["msgErr"])){
+                    if($_SESSION["msgErr"]){
+                        echo '<div class="alert alert-success mt-3" role="alert">
+                        Donnée du praticien mises à jour !
+                        </div>';
+                        unset($_SESSION["msgErr"]);
+                    }
+                } 
+                ?>
             </div>
         </div>
     </div>

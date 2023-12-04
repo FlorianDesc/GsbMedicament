@@ -9,54 +9,80 @@
                 <?php if (isset($userEmpty)) {
                     echo '<p class="alert alert-danger text-center w-100">' . $userEmpty . '</p>';
                 }?>
-                <form class="form-signin formulaire m-auto d-flex flex-column align-items-center" action="index.php?uc=connexion&action=connexion" method="post">
+                <form class="form-signin formulaire m-auto d-flex flex-column align-items-center" action="index.php?uc=gestion&action=sauvegardeInfoPraticien&idpra= <?php echo $infoPratSelect['PRA_NUM'] ?>" method="post">
                     <div class="container">
-
                         <div class="row gap-5 m-5">
                             <div class="col">
                                 <label class="w-100 text-center" for="nom">Nom</label>
-                                <input type="nom" class="form-control" name="nom" />
+                                <?php 
+                                echo '<input type="text" class="form-control" name="nom" value="' . $infoPratSelect['PRA_NOM'] .'" required/>';
+                                ?>
                             </div>
                             <div class="col">
                                 <label class="w-100 text-center" for="prenom">Prenom</label>
-                                <input type="prenom" class="form-control" name="prenom" />
+                                <?php 
+                                echo '<input type="text" class="form-control" name="prenom" value="' . $infoPratSelect['PRA_PRENOM'] .'" required/>';
+                                ?>
                             </div>
                         </div>
 
                         <div class="row gap-5 m-5">
                             <div class="col">
                                 <label class="w-100 text-center" for="adresse">Adresse</label>
-                                <input type="adresse" class="form-control" name="adresse" />
+                                <?php 
+                                echo '<input type="text" class="form-control" name="adresse"" value="' . $infoPratSelect['PRA_ADRESSE'] .'" required/>';
+                                ?>
                             </div>
                             <div class="col">
                             <label class="w-100 text-center" for="cp">Code Postal</label>
-                                <input type="cp" class="form-control" name="cp" />
+                            <?php 
+                                echo '<input type="text" class="form-control" name="cp" value="' . $infoPratSelect['PRA_CP'] .'" required/>';
+                                ?>
                             </div>
                         </div>
 
                         <div class="row gap-5 m-5">
                             <div class="col">
                                 <label class="w-100 text-center" for="ville">Ville</label>
-                                <input type="ville" class="form-control" name="ville" />
+                                <?php 
+                                echo '<input type="text" class="form-control" name="ville" value="' . $infoPratSelect['PRA_VILLE'] .'" required/>';
+                                ?>
                             </div>
                             <div class="col">
-                            <label class="w-100 text-center" for="cn">Coefficient notoriété</label>
-                                <input type="cn" class="form-control" name="cn" />
+                                <label class="w-100 text-center" for="cn">Coefficient notoriété</label>
+                                <?php 
+                                echo '<input type="number" class="form-control" name="cn" value="' . $infoPratSelect['PRA_COEFNOTORIETE'] .'"/>';
+                                ?>
                             </div>
                         </div>
 
                         <div class="row gap-5 m-5">
                             <div class="col">
                                 <label class="w-100 text-center" for="cc">Coefficient confiance</label>
-                                <input type="cc" class="form-control" name="cc" />
+                                <?php 
+                                echo '<input type="number" class="form-control" name="cc" value="' . $infoPratSelect['PRA_COEFCONFIANCE'] .'"/>';
+                                ?>
                             </div>
                             <div class="col">
                                 <label class="w-100 text-center" for="tp">Type praticien</label>
-                                <input type="tp" class="form-control" name="tp" />
+                                <?php
+                                echo '<select class="form-control">';
+                                foreach($typePra as $typ){
+                                    if($typ['TYP_CODE'] == $infoPratSelect['TYP_CODE']){
+                                        echo '<option selected="selected" value="' . $typ['TYP_CODE'] . '" >' . $typ['TYP_CODE'] . '</option>';
+                                    }
+                                    else{
+                                        echo '<option value="' . $typ['TYP_CODE'] . '" >' . $typ['TYP_CODE'] . '</option>';
+                                    }
+                                } 
+                                echo '</select>';
+                                ?>
                             </div>
                         </div>
-                        <input class="btn btn-info text-light valider" type="submit" value="Sauvegarder">
-                        <input class="btn btn-info text-light valider mt-2" type="submit" value="Annuler">
+                        <div class="d-flex flex-column justify-content-center align-items-center gap-2">
+                            <input class="btn btn-info text-light valider" type="submit" value="Enregistrer">
+                            <a class="btn btn-info text-light" href="index.php?uc=gestion&action=gererMedecinListe">Annuler</a>
+                        </div>
                     </div>
                 </form>
             </div>
