@@ -36,6 +36,10 @@
                         </li>
 
                         <li class="nav-item ">
+                            <a class="nav-link btn-outline-info rounded-pill px-3 fw-bold" href="index.php?uc=rapport&action=choisirRapport">Mes rapports</a>
+                        </li>
+
+                        <li class="nav-item ">
                             <a class="nav-link btn-outline-info rounded-pill px-3 fw-bold" href="index.php?uc=praticiens&action=formulairepraticien">Praticiens</a>
                         </li>
 

@@ -11,7 +11,7 @@
 
     require_once('modele/rapportVisiteRegion.modele.inc.php');
 
-
+    require_once('modele/rapport.modele.inc.php');
 
 
     if(!isset($_REQUEST['uc']) || empty($_REQUEST['uc']))
@@ -87,6 +87,12 @@
             else{
                 include("vues/v_accesInterdit.php");
             }
+            break;
+        }
+
+        case 'rapport': {
+
+            include("controleur/c_rapport.php");
             break;
         }
 

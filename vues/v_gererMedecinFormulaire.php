@@ -66,7 +66,7 @@
                             <div class="col">
                                 <label class="w-100 text-center" for="tp">Type praticien</label>
                                 <?php
-                                echo '<select class="form-control">';
+                                echo '<select name="tp" class="form-control">';
                                 foreach($typePra as $typ){
                                     if($typ['TYP_CODE'] == $infoPratSelect['TYP_CODE']){
                                         echo '<option selected="selected" value="' . $typ['TYP_CODE'] . '" >' . $typ['TYP_CODE'] . '</option>';
