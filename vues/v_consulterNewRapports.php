@@ -15,7 +15,7 @@
                     <?php
                     foreach($res as $rapport){
                         ?>
-                        <p class="mb-5"><span class="carac">rapport n°</span> : <?php echo $rapport['RAP_NUM'] ?></p>
+                        <p><span class="carac">rapport n°</span> : <?php echo $rapport['RAP_NUM'] ?></p>
                         <p><span class="carac">nom collaborateur</span> : <?php echo $rapport['COL_NOM'] ?></p>
                         <p><span class="carac">num praticien</span> : <?php echo $rapport['PRA_NUM'] ?></p>
                         <p><span class="carac">nom praticien</span> : <?php echo $rapport['PRA_NOM'] ?></p>

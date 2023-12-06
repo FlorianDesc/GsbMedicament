@@ -61,6 +61,10 @@ include_once 'bd.inc.php';
         }
     }
 
+
+
+    
+
     function getDepartement(){
 
         try{
@@ -191,9 +195,9 @@ include_once 'bd.inc.php';
 
 
     function getRapportMemeRegion($collabs){
-        $tab;
+        $tab = [];
         foreach($collabs as $collab){
-            $tab[]=getRapportCollab($collab);
+            array_push($tab, getRapportCollab($collab));
         }
         return $tab;
     }

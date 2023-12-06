@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3307
--- Généré le : lun. 04 déc. 2023 à 18:00
+-- Généré le : mer. 06 déc. 2023 à 11:33
 -- Version du serveur : 10.10.2-MariaDB
 -- Version de PHP : 8.0.26
 
@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS `collaborateur` (
 --
 
 INSERT INTO `collaborateur` (`COL_MATRICULE`, `COL_NOM`, `COL_PRENOM`, `COL_ADRESSE`, `COL_CP`, `COL_VILLE`, `COL_DATEEMBAUCHE`, `SEC_CODE`, `HAB_ID`, `REG_CODE`) VALUES
-('a131', 'Villechalane', 'Louis', '8 cours Lafontaine', '29000', 'BREST', '1992-12-11 00:00:00', 'E', '2', 'BN'),
+('a131', 'Villechalane', 'Louis', '8 cours Lafontaine', '43000', 'BREST', '1992-12-11 00:00:00', 'E', '2', 'BN'),
 ('a17', 'Andre', 'David', '1 r Aimon de Chissée', '38100', 'GRENOBLE', '1991-08-26 00:00:00', NULL, '1', 'RA'),
 ('a55', 'Bedos', 'Christian', '1 r Bénédictins', '65000', 'TARBES', '1987-07-17 00:00:00', NULL, '2', 'RO'),
 ('a93', 'Tusseau', 'Louis', '22 r Renou', '86000', 'POITIERS', '1999-01-02 00:00:00', NULL, '2', 'PC'),
@@ -259,6 +259,14 @@ CREATE TABLE IF NOT EXISTS `etat` (
   `LIBELLE_ETAT` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`ID_ETAT`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_bin;
+
+--
+-- Déchargement des données de la table `etat`
+--
+
+INSERT INTO `etat` (`ID_ETAT`, `LIBELLE_ETAT`) VALUES
+('NC', 'Non confirmé'),
+('V', 'Validé');
 
 -- --------------------------------------------------------
 
@@ -534,12 +542,12 @@ INSERT INTO `praticien` (`PRA_NUM`, `PRA_NOM`, `PRA_PRENOM`, `PRA_ADRESSE`, `PRA
 (15, 'Bessin-Grosdoit', 'Christophe', '92 r Falaise', '6000', 'NICE', 222.06, NULL, 'PO'),
 (16, 'Rossa', 'Claire', '14 av Thiès', '6000', 'NICE', 529.78, NULL, 'MH'),
 (17, 'Cauchy', 'Denis', '5 av Ste Thérèse', '11000', 'NARBONNE', 458.82, NULL, 'MV'),
-(18, 'Gaffé', 'Dominique', '9 av 1ère Armée Française', '35000', 'RENNES', 213.4, NULL, 'PS'),
+(18, 'Gaffé', 'Dominique', '9 av 1ère Armée Française', '35000', 'RENNES', 213.4, 12, 'PS'),
 (19, 'Guenon', 'Dominique', '98 bd Mar Lyautey', '44000', 'NANTES', 175.89, NULL, 'PH'),
 (20, 'Prévot', 'Dominique', '29 r Lucien Nelle', '87000', 'LIMOGES', 151.36, NULL, 'PO'),
 (21, 'Houchard', 'Eliane', '9 r Demolombe', '49100', 'ANGERS', 436.96, NULL, 'MH'),
-(22, 'Desmons', 'Elisabeth', '51 r Bernières', '29000', 'QUIMPER', 281.17, NULL, 'MV'),
-(23, 'Flament', 'Elisabeth', '11 r Pasteur', '35000', 'RENNES', 315.6, NULL, 'PS'),
+(22, 'Desmons', 'Elisabeth', '51 r Bernières', '29000', 'QUIMPER', 281.17, 12, 'MV'),
+(23, 'Flament', 'Elisabeth', '11 r Pasteur', '35000', 'RENNES', 315.6, NULL, 'MH'),
 (24, 'Goussard', 'Emmanuel', '9 r Demolombe', '41000', 'BLOIS', 40.72, NULL, 'PH'),
 (25, 'Desprez', 'Eric', '9 r Vaucelles', '33000', 'BORDEAUX', 406.85, NULL, 'PO'),
 (26, 'Coste', 'Evelyne', '29 r Lucien Nelle', '19000', 'TULLE', 441.87, NULL, 'MH'),
@@ -554,7 +562,7 @@ INSERT INTO `praticien` (`PRA_NUM`, `PRA_NOM`, `PRA_PRENOM`, `PRA_ADRESSE`, `PRA
 (35, 'Leveneur', 'Hugues', '7 pl St Gilles', '62000', 'ARRAS', 7.39, NULL, 'PO'),
 (36, 'Mosquet', 'Isabelle', '22 r Jules Verne', '76000', 'ROUEN', 77.1, NULL, 'MH'),
 (37, 'Giraudon', 'Jean-Christophe', '1 r Albert de Mun', '38100', 'VIENNE', 92.62, NULL, 'MV'),
-(38, 'Marie', 'Jean-Claude', '26 r Hérouville', '69000', 'LYON', 120.1, NULL, 'PS'),
+(38, 'Marie', 'Jean-Claude', '26 r Hérouville', '69000', 'LYON', 120.1, 12, 'PS'),
 (39, 'Maury', 'Jean-François', '5 r Pierre Girard', '71000', 'CHALON SUR SAONE', 13.73, NULL, 'PH'),
 (40, 'Dennel', 'Jean-Louis', '7 pl St Gilles', '28000', 'CHARTRES', 550.69, NULL, 'PO'),
 (41, 'Ain', 'Jean-Pierre', '4 résid Olympia', '2000', 'LAON', 5.59, NULL, 'MH'),
@@ -572,7 +580,7 @@ INSERT INTO `praticien` (`PRA_NUM`, `PRA_NOM`, `PRA_PRENOM`, `PRA_ADRESSE`, `PRA
 (53, 'Vittorio', 'Myriam', '3 pl Champlain', '94000', 'BOISSY SAINT LEGER', 356.23, NULL, 'PS'),
 (54, 'Lapasset', 'Nhieu', '31 av 6 Juin', '52000', 'CHAUMONT', 107, NULL, 'PH'),
 (55, 'Plantet-Besnier', 'Nicole', '10 av 1ère Armée Française', '86000', 'CHATELLEREAULT', 369.94, NULL, 'PO'),
-(56, 'Chubilleau', 'Pascal', '3 r Hastings', '15000', 'AURRILLAC', 290.75, NULL, 'MH'),
+(56, 'Chubilleau', 'Pascal', '3 r Hastings', '15000', 'AURRILLAC', 290.75, -12, 'MH'),
 (57, 'Robert', 'Pascal', '31 r St Jean', '93000', 'BOBIGNY', 162.41, NULL, 'MV'),
 (58, 'Jean', 'Pascale', '114 r Authie', '49100', 'SAUMUR', 375.52, NULL, 'PS'),
 (59, 'Chanteloube', 'Patrice', '14 av Thiès', '13000', 'MARSEILLE', 478.01, NULL, 'PH'),
@@ -668,9 +676,9 @@ CREATE TABLE IF NOT EXISTS `rapport_visite` (
 --
 
 INSERT INTO `rapport_visite` (`COL_MATRICULE`, `RAP_NUM`, `PRA_NUM`, `RAP_DATE`, `RAP_BILAN`, `RAP_MOTIF_AUTRE`, `DATE_VISITE`, `ID_ETAT`, `PRA_NUM_REMPLACANT`, `MOT_CODE`, `MED_DEPOTLEGAL_Presente1`, `MED_DEPOTLEGAL_Presente2`) VALUES
-('a131', 3, 23, '2002-04-18 00:00:00', 'Médecin curieux, à recontacer en décembre pour réunion', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('a131', 7, 41, '2003-03-23 00:00:00', 'RAS\r\nChangement de tel : 05 89 89 89 89', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('a17', 4, 4, '2003-05-21 00:00:00', 'Changement de direction, redéfinition de la politique médicamenteuse, recours au générique', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+('a131', 3, 23, '2002-04-18 00:00:00', 'Médecin curieux, à recontacer en décembre pour réunion', NULL, NULL, 'V', NULL, NULL, NULL, NULL),
+('a131', 7, 41, '2003-03-23 00:00:00', 'RAS\r\nChangement de tel : 05 89 89 89 89', NULL, NULL, 'NC', NULL, NULL, NULL, NULL),
+('a17', 4, 4, '2003-05-21 00:00:00', 'Changement de direction, redéfinition de la politique médicamenteuse, recours au générique', NULL, NULL, 'NC', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 

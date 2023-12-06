@@ -1,4 +1,5 @@
 <?php
+    ob_start();
     require_once ('modele/medicament.modele.inc.php');
    
     require_once ('modele/connexion.modele.inc.php');
@@ -103,6 +104,8 @@
         }
     }
 
-include("vues/v_footer.php") ;?>
+include("vues/v_footer.php") ;
+ob_end_flush();
+?>
 </body>
 </html>
