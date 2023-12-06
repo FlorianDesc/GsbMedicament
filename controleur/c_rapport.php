@@ -23,8 +23,23 @@ switch ($action) {
 	case 'consulterRapport': {
 
 		$infoRapport = getInfoRapport($_GET['id']);
-		var_dump($infoRapport);
 		include("vues/v_consultationMonRapport.php");
+		break;
+	}
+
+	case 'voirNouveauRapport': {
+
+		$cp = getDepartement()['COL_CP'];
+		$nb = cpToTwoNb($cp);
+		$reg = getRegion($nb);
+		$deps = getCollabDansReg($reg['REG_CODE']);
+		$lesDeps = tableauDeDepartement($deps);
+
+		$allCollab = getAllCollabRapport($_SESSION['matricule']);
+		$tabCollab = tableauDeCollab($allCollab);
+		$collabsMemeReg = getTableauCpAllColab($tabCollab, $lesDeps);
+		$res = getRapportMemeRegion($collabsMemeReg);
+		include("vues/v_consulterNewRapports.php");
 		break;
 	}
 

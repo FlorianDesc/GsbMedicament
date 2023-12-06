@@ -30,8 +30,7 @@ switch ($action) {
 
 	case 'sauvegardeInfoPraticien': {
 
-		$insertion = insertNewInfoPraticien($_GET['idpra'], $_POST['nom'], $_POST['prenom'], $_POST['adresse'], $_POST['cp'], $_POST['ville'], $_POST['cn'], $_POST['cc'], $_POST['tp']);
-		$_SESSION["msgErr"]=$insertion;
+		$_SESSION["msgErr"] = insertNewInfoPraticien($_GET['idpra'], $_POST['nom'], $_POST['prenom'], $_POST['adresse'], $_POST['cp'], $_POST['ville'], $_POST['cn'], $_POST['cc'], $_POST['tp']);
 		header('Location: index.php?uc=gestion&action=gererMedecinListe');
 		break;
 	}

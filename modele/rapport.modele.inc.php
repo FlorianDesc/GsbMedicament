@@ -61,4 +61,143 @@ include_once 'bd.inc.php';
         }
     }
 
+    function getDepartement(){
+
+        try{
+            $monPdo = connexionPDO();
+            $req = 'SELECT COL_CP from collaborateur';
+            $res = $monPdo->query($req);
+            $result = $res->fetch();
+            return $result;
+        } 
+
+        catch (PDOException $e){
+            print "Erreur !: " . $e->getMessage();
+            die();
+        }
+    }
+
+    function cpToTwoNb($cp){
+        $nb = $cp;
+        if(strlen($cp)>4){
+            $nb = substr($cp,0,2);
+        }
+        else{
+            $nb = substr($cp,0,1);
+        }
+        return $nb;
+    }
+
+    function getRegion($dep){
+        try{
+            $monPdo = connexionPDO();
+            $req = 'SELECT REG_CODE FROM departement WHERE NoDEPT= "' . $dep . '"';
+            $res = $monPdo->query($req);
+            $result = $res->fetch();
+            return $result;
+        } 
+
+        catch (PDOException $e){
+            print "Erreur !: " . $e->getMessage();
+            die();
+        }
+    }
+
+    function getCollabDansReg($reg){
+
+        try{
+            $monPdo = connexionPDO();
+            $req = 'SELECT NoDEPT FROM departement WHERE REG_CODE = "' . $reg . '"';
+            $res = $monPdo->query($req);
+            $result = $res->fetchAll();
+            return $result;
+        } 
+
+        catch (PDOException $e){
+            print "Erreur !: " . $e->getMessage();
+            die();
+        }
+    }
+
+    function getAllCollabRapport($idCollab){
+
+        try{
+            $monPdo = connexionPDO();
+            $req = 'SELECT COL_MATRICULE FROM rapport_visite WHERE COL_MATRICULE != "' . $idCollab . '"';
+            $res = $monPdo->query($req);
+            $result = $res->fetchAll();
+            return $result;
+        } 
+
+        catch (PDOException $e){
+            print "Erreur !: " . $e->getMessage();
+            die();
+        }
+    }
+
+    function tableauDeDepartement($deps){
+        foreach($deps as $dep){
+            $tableauDeps[]=$dep['NoDEPT'];
+        }
+        return $tableauDeps;
+    }
+
+    function tableauDeCollab($collabs){
+        foreach($collabs as $collab){
+            $tableauCollabs[]=$collab['COL_MATRICULE'];
+        }
+        return $tableauCollabs;
+    }
+
+    function getCpCollab($idCollab){
+        try{
+            $monPdo = connexionPDO();
+            $req = 'SELECT COL_CP FROM collaborateur WHERE COL_MATRICULE="' . $idCollab . '"';
+            $res = $monPdo->query($req);
+            $result = $res->fetch();
+            return $result;
+        } 
+
+        catch (PDOException $e){
+            print "Erreur !: " . $e->getMessage();
+            die();
+        }
+    }
+
+    function getTableauCpAllColab($collabs, $deps){
+        $tab = [];
+        foreach($collabs as $collab){
+            if(in_array(cpToTwoNb(getCpCollab($collab)['COL_CP']), $deps)){
+                $tab[]=$collab;
+            }
+        }
+        return $tab;
+    }
+
+    function getRapportCollab($idCollab){
+        try{
+            $monPdo = connexionPDO();
+            $req = 'SELECT c.COL_NOM, r.RAP_NUM, p.PRA_NUM, p.PRA_NOM, r.RAP_BILAN, DATE(r.RAP_DATE) AS RAP_DATE FROM rapport_visite r INNER JOIN collaborateur c ON r.COL_MATRICULE=c.COL_MATRICULE INNER JOIN praticien p ON r.PRA_NUM=p.PRA_NUM WHERE c.COL_MATRICULE="' . $idCollab . '" AND (r.ID_ETAT="V" OR ID_ETAT="NC")'  ;
+            $res = $monPdo->query($req);
+            $result = $res->fetch();
+            return $result;
+        } 
+
+        catch (PDOException $e){
+            print "Erreur !: " . $e->getMessage();
+            die();
+        }
+    }
+
+
+    function getRapportMemeRegion($collabs){
+        $tab;
+        foreach($collabs as $collab){
+            $tab[]=getRapportCollab($collab);
+        }
+        return $tab;
+    }
+
+
+
 ?>
