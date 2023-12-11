@@ -9,7 +9,7 @@
         <div class="row align-items-center justify-content-center">
             <div class="test col-12 col-sm-8 col-lg-6 col-xl-5 col-xxl-4 py-lg-5 py-3">
                 <form class="formulaire d-flex flex-column justify-content-center align-items-center gap-3" method="POST" action="index.php?uc=rapport&action=voirRapport">
-                    <label class="titre-formulaire mb-3" for="listemedoc">Praticiens disponible :</label>
+                    <label class="titre-formulaire mb-3" for="listemedoc">Consulter un rapport :</label>
                     <div>
                         <label for="date">date de début :</label>
                         <input required type="date" id="dateD" name="dateD">

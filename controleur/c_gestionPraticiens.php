@@ -35,6 +35,19 @@ switch ($action) {
 		break;
 	}
 
+	case 'creerNouveauMedecin': {
+
+		$typePra = getAllTypePraticien();
+		include("vues/v_formulaireNouveauMedecin.php");
+		break;
+	}
+
+	case 'creationMedecin': {
+		$insertion = insertNewMedecin($_POST['nom'], $_POST['prenom'], $_POST['adresse'], $_POST['cp'], $_POST['ville'], $_POST['cn'], $_POST['cc'], $_POST['tc']);
+		header("Location: index.php?uc=accueil");
+		break;
+	}
+
 	default: {
 
 		header('Location: index.php?uc=gestion&action=gererMedecinListe');
