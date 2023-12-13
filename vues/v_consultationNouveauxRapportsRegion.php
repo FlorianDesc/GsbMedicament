@@ -20,7 +20,7 @@
                     <p><span class="carac">prenom praticien</span> : <?php echo $infoRapport['PRA_PRENOM'] ?></p>
                     <p><span class="carac">date du rapport</span> : <?php echo date("d/m/Y", strtotime($infoRapport['RAP_DATE'])); ?></p>
                     <p><span class="carac">bilan du rapport</span> : <?php echo $infoRapport['RAP_BILAN'] ?></p>
-                    <a class="btn btn-info text-light" href="index.php?uc=accueil">Modifier</a>
+                    <a class="btn btn-info text-light me-3" href="index.php?uc=accueil">Valider le rapport</a>
                 </div>
             </div>
         </div>

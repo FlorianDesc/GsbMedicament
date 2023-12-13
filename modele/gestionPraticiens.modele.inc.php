@@ -217,4 +217,19 @@ include_once 'bd.inc.php';
         }
     }
 
+    function getAllSpecialite(){
+
+        try{
+            $monPdo = connexionPDO();
+            $req = 'SELECT * from specialite';
+            $res = $monPdo->query($req);
+            $result = $res->fetchAll();
+            return $result;
+        } 
+
+        catch (PDOException $e){
+            print "Erreur !: " . $e->getMessage();
+            die();
+        }
+    }
 ?>

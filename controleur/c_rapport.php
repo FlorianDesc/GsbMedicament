@@ -27,7 +27,14 @@ switch ($action) {
 		break;
 	}
 
-	case 'voirNouveauRapport': {
+	case 'consulterNouveauxRapportsRegion': {
+		
+		$infoRapport = getInfoRapport($_GET['id']);
+		include("vues/v_consultationNouveauxRapportsRegion.php");
+		break;
+	}
+
+	case 'voirListeRapportRegion': {
 
 		$cp = getDepartement()['COL_CP'];
 		$nb = cpToTwoNb($cp);
@@ -38,8 +45,8 @@ switch ($action) {
 		$allCollab = getAllCollabRapport($_SESSION['matricule']);
 		$tabCollab = tableauDeCollab($allCollab);
 		$collabsMemeReg = getTableauCpAllColab($tabCollab, $lesDeps);
-		$res = getRapportMemeRegion($collabsMemeReg);
-		include("vues/v_consulterNewRapports.php");
+		$mesRapports = getRapportMemeRegion($collabsMemeReg);
+		include("vues/v_listeMesNouveauxRapports.php");
 		break;
 	}
 

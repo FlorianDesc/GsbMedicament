@@ -127,7 +127,7 @@ include_once 'bd.inc.php';
 
         try{
             $monPdo = connexionPDO();
-            $req = 'SELECT COL_MATRICULE FROM rapport_visite WHERE COL_MATRICULE != "' . $idCollab . '"';
+            $req = 'SELECT DISTINCT(COL_MATRICULE) FROM rapport_visite WHERE COL_MATRICULE != "' . $idCollab . '"';
             $res = $monPdo->query($req);
             $result = $res->fetchAll();
             return $result;
@@ -181,7 +181,7 @@ include_once 'bd.inc.php';
     function getRapportCollab($idCollab){
         try{
             $monPdo = connexionPDO();
-            $req = 'SELECT c.COL_NOM, r.RAP_NUM, p.PRA_NUM, p.PRA_NOM, r.RAP_BILAN, DATE(r.RAP_DATE) AS RAP_DATE FROM rapport_visite r INNER JOIN collaborateur c ON r.COL_MATRICULE=c.COL_MATRICULE INNER JOIN praticien p ON r.PRA_NUM=p.PRA_NUM WHERE c.COL_MATRICULE="' . $idCollab . '" AND (r.ID_ETAT="V" OR ID_ETAT="NC")'  ;
+            $req = 'SELECT DISTINCT(RAP_NUM) FROM rapport_visite WHERE COL_MATRICULE="' . $idCollab . '" AND (ID_ETAT="V" OR ID_ETAT="NC")'  ;
             $res = $monPdo->query($req);
             $result = $res->fetch();
             return $result;

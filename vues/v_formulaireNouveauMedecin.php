@@ -25,18 +25,18 @@
                     <div class="d-flex flex-column justify-content-center align-items-center text-center">
                         <label class="d-flex flex-column text-center" for="cp">Code postal :</label>
                         <input style="width:200%;" required type="text" id="cp" name="cp">
-                    </div >
+                    </div>
                     <div class="d-flex flex-column justify-content-center align-items-center text-center">
                         <label class="d-flex flex-column text-center" for="ville">Ville :</label>
-                        <input style="width:200%;" required type="text" id="ville" name="ville">
+                        <input style="width:200%; margin-bottom:10px;" required type="text" id="ville" name="ville">
                     </div>
                     <div class="d-flex flex-column justify-content-center align-items-center text-center">
                         <label class="d-flex flex-column text-center" for="cn">Coefficient de notoriété :</label>
-                        <input style="width:200%;" type="number" id="cn" name="cn">
+                        <input style="width:200%; margin-bottom:10px;" type="number" id="cn" name="cn">
                     </div>
                     <div class="d-flex flex-column justify-content-center align-items-center text-center">
                         <label class="d-flex flex-column text-center" for="cc">Coéfficient de confiance :</label>
-                        <input style="width:200%;" type="number" id="cc" name="cc">
+                        <input style="width:200%; margin-bottom:10px;" type="number" id="cc" name="cc">
                     </div>
                     <div class="d-flex flex-column justify-content-center align-items-center text-center">
                         <label class="d-flex flex-column text-center" for="tp">Type code :</label>
@@ -52,6 +52,17 @@
                         } 
                         echo '</select>';
                         ?>
+                    </div>
+                    <div class="d-flex flex-column justify-content-center align-items-center text-center">
+                        <label for="spe">Spécialités</label>
+                        <select style="width:378px; min-height:29.19px;" name="spe" id="spe">
+                            <option value="">-</option>
+                            <?php
+                                foreach($spes as $spe){
+                                    echo '<option value="' . $spe['SPE_CODE'] . '" >' . $spe['SPE_LIBELLE'] . '</option>';
+                                }
+                            ?>
+                        </select>
                     </div>
                     <input class="btn btn-info text-light valider" type="submit" value="Valider">
                 </form>

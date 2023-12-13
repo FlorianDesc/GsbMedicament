@@ -37,6 +37,8 @@ switch ($action) {
 
 	case 'creerNouveauMedecin': {
 
+		$spes = getAllSpecialite();
+		//var_dump($spes);
 		$typePra = getAllTypePraticien();
 		include("vues/v_formulaireNouveauMedecin.php");
 		break;
