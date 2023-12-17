@@ -7,8 +7,9 @@ if (!isset($_REQUEST['action']) || empty($_REQUEST['action'])) {
 switch ($action) {
 
     case 'choisirRapport': {
-
+		
 		$lesPraticiens = getPraticienMesRapport($_SESSION['matricule']);
+		include("vues/v_message.php");
 		include("vues/v_mesRapports.php");
         break;
     }

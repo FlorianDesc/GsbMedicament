@@ -79,6 +79,21 @@
                                 ?>
                             </div>
                         </div>
+                        <div class="row m-5 d-flex align-items-center justify-content-center">
+                            <div class="w-50">
+                                <label class="w-100 text-center" for="fruits">POMME</label>
+                                <div id="containerMultiSelect" style="min-height:45.6px; transition:.2s; cursor:pointer;" class="border position-relative form-control d-flex justify-content-end align-items-center">▼
+
+                                    <div style="transition: 2s;" id="choix" class="position-absolute top-100 start-0 bg-danger d-flex flex-column align-items-center d-none">
+                                        <div id="choix1">choix1</div>
+                                        <div id="choix1">choix2</div>
+                                        <div id="choix1">choix3</div>
+                                        <div id="choix1">choix4</div>
+                                    </div>
+                                </div>
+                                <input type="text" class="d-none" value="">
+                            </div>
+                        </div>
                         <div class="d-flex flex-column justify-content-center align-items-center gap-2">
                             <input class="btn btn-info text-light valider" type="submit" value="Enregistrer">
                             <a class="btn btn-info text-light" href="index.php?uc=gestion&action=gererMedecinListe">Annuler</a>
@@ -89,3 +104,28 @@
         </div>
     </div>
 </section>
+
+<script>
+    const containerMultiSelect = document.querySelector("#containerMultiSelect")
+    containerMultiSelect.addEventListener("mouseover", () => {
+        containerMultiSelect.style.backgroundColor = "rgba(138, 138, 138, 0.31)"
+    })
+    containerMultiSelect.addEventListener("mouseout", () => {
+        containerMultiSelect.style.background = "none"
+    })
+
+    const choix = document.querySelector("#choix")
+    var nbClick = 0
+    containerMultiSelect.addEventListener("click", () => {
+        nbClick++
+        if(nbClick%2 != 0){
+            choix.classList.replace("d-none","d-block")
+        }
+        else{
+            choix.classList.replace("d-block","d-none")
+        }
+    })
+
+
+    
+</script>
