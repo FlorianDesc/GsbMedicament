@@ -9,7 +9,7 @@
                 <?php if (isset($userEmpty)) {
                     echo '<p class="alert alert-danger text-center w-100">' . $userEmpty . '</p>';
                 }?>
-                <form class="form-signin formulaire m-auto d-flex flex-column align-items-center" action="index.php?uc=gestion&action=sauvegardeInfoPraticien&idpra= <?php echo $infoPratSelect['PRA_NUM'] ?>" method="post">
+                <form style="height:926px;" class="form-signin formulaire m-auto d-flex flex-column align-items-center" action="index.php?uc=gestion&action=sauvegardeInfoPraticien&idpra= <?php echo $infoPratSelect['PRA_NUM'] ?>" method="post">
                     <div class="container">
                         <div class="row gap-5 m-5">
                             <div class="col">
@@ -82,15 +82,18 @@
                         <div class="row m-5 d-flex align-items-center justify-content-center">
                             <div class="w-50">
                                 <label class="w-100 text-center" for="fruits">POMME</label>
-                                <div id="containerMultiSelect" style="min-height:45.6px; transition:.2s; cursor:pointer;" class="border position-relative form-control d-flex justify-content-end align-items-center">▼
-
-                                    <div style="transition: 2s;" id="choix" class="position-absolute top-100 start-0 bg-danger d-flex flex-column align-items-center d-none">
-                                        <div id="choix1">choix1</div>
-                                        <div id="choix1">choix2</div>
-                                        <div id="choix1">choix3</div>
-                                        <div id="choix1">choix4</div>
-                                    </div>
+                                <div id="containerMultiSelect" style="min-height:45.6px; transition:.2s; cursor:pointer;" class="border form-control d-flex justify-content-end align-items-center">▼
                                 </div>
+                                <div style="transition: 2s; max-height:96px; overflow-y: scroll;" id="choix" class=" bg-danger d-flex flex-column align-items-center d-none">
+                                        <div onclick="getClass(this)" class="choix 1">choix1</div>
+                                        <div class="choix 2">choix2</div>
+                                        <div class="choix 3">choix3</div>
+                                        <div class="choix 4">choix4</div>
+                                        <div class="choix 4">choix4</div>
+                                        <div class="choix 4">choix4</div>
+                                        <div class="choix 4">choix4</div>
+                                        <div class="choix 4">choix4</div>
+                                    </div>
                                 <input type="text" class="d-none" value="">
                             </div>
                         </div>
@@ -125,6 +128,13 @@
             choix.classList.replace("d-block","d-none")
         }
     })
+
+    function getClass(element){
+        if (element instanceof HTMLElement) {
+            console.log(element.className)
+        } 
+    }
+    
 
 
     
