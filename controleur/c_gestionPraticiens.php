@@ -24,6 +24,7 @@ switch ($action) {
 
 		$infoPratSelect = getInfoPraticien($_POST['praticien']);
 		$typePra = getAllTypePraticien();
+		$specialites = getAllSpecialite();
         include ("vues/v_gererMedecinFormulaire.php");
         break;
 	}
