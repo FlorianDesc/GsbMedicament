@@ -217,6 +217,23 @@ include_once 'bd.inc.php';
         }
     }
 
+    function insertSpe($idPra, $spe){
+        try{
+            var_dump($idPra, $spe);
+            $monPdo = connexionPDO();
+            $req = 'INSERT INTO posseder (PRA_NUM, SPE_CODE) VALUES (:PRA_NUM, :SPE_CODE)';
+            $res = $monPdo->prepare($req);
+            $param = array(':PRA_NUM'=>$idPra, ':SPE_CODE'=>$spe);
+            $result = $res->execute($param); 
+            return $result;
+        } 
+
+        catch (PDOException $e){
+            print "Erreur !: " . $e->getMessage();
+            die();
+        }
+    }
+
     function getAllSpecialite(){
 
         try{
@@ -232,4 +249,21 @@ include_once 'bd.inc.php';
             die();
         }
     }
+
+    function getSpePraticien($idPra){
+
+        try{
+            $monPdo = connexionPDO();
+            $req = 'SELECT SPE_CODE from posseder WHERE PRA_NUM="' . $idPra . '"';
+            $res = $monPdo->query($req);
+            $result = $res->fetchAll();
+            return $result;
+        } 
+
+        catch (PDOException $e){
+            print "Erreur !: " . $e->getMessage();
+            die();
+        }
+    }
+
 ?>
