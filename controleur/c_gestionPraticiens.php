@@ -35,6 +35,13 @@ switch ($action) {
 		break;
 	}
 
+	case 'ajouterNouveauMedecin': {
+
+		
+		include("vues/v_ajouterNouveauMedecin.php");
+		break;
+	}
+
 	default: {
 
 		header('Location: index.php?uc=gestion&action=gererMedecinListe');

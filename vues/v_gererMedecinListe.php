@@ -26,6 +26,7 @@
                         ?>
                     </select>
                     <input class="btn btn-info text-light valider" type="submit" value="Afficher les informations">
+                    <a class="btn btn-info text-light mt-3" href="index.php?uc=gestion&action=ajouterNouveauMedecin">Ajouter nouveau médecin</a>
                 </form>
                 <?php
                 if(isset($_SESSION["msgErr"])){
