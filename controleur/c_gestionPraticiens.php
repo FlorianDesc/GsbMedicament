@@ -24,6 +24,8 @@ switch ($action) {
 
 		$infoPratSelect = getInfoPraticien($_POST['praticien']);
 		$typePra = getAllTypePraticien();
+		$specialites = getAllSpecialite();
+		$speDuPra = getSpePraticien($_POST['praticien']);
         include ("vues/v_gererMedecinFormulaire.php");
         break;
 	}
@@ -31,14 +33,29 @@ switch ($action) {
 	case 'sauvegardeInfoPraticien': {
 
 		$_SESSION["msgErr"] = insertNewInfoPraticien($_GET['idpra'], $_POST['nom'], $_POST['prenom'], $_POST['adresse'], $_POST['cp'], $_POST['ville'], $_POST['cn'], $_POST['cc'], $_POST['tp']);
+		$specialites = explode(" ", $_POST['spe']);
+		if($specialites[0] == ''){
+			unset($specialites[0]);
+		}
+		var_dump($specialites);
+		foreach($specialites as $spe){
+			insertSpe($_GET['idpra'], $spe);
+		}
 		header('Location: index.php?uc=gestion&action=gererMedecinListe');
 		break;
 	}
 
-	case 'ajouterNouveauMedecin': {
+	case 'creerNouveauMedecin': {
 
-		
-		include("vues/v_ajouterNouveauMedecin.php");
+		$spes = getAllSpecialite();
+		$typePra = getAllTypePraticien();
+		include("vues/v_formulaireNouveauMedecin.php");
+		break;
+	}
+
+	case 'creationMedecin': {
+		$insertion = insertNewMedecin($_POST['nom'], $_POST['prenom'], $_POST['adresse'], $_POST['cp'], $_POST['ville'], $_POST['cn'], $_POST['cc'], $_POST['tc']);
+		header("Location: index.php?uc=accueil");
 		break;
 	}
 

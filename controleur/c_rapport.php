@@ -7,8 +7,9 @@ if (!isset($_REQUEST['action']) || empty($_REQUEST['action'])) {
 switch ($action) {
 
     case 'choisirRapport': {
-
+		
 		$lesPraticiens = getPraticienMesRapport($_SESSION['matricule']);
+		include("vues/v_message.php");
 		include("vues/v_mesRapports.php");
         break;
     }
@@ -27,7 +28,14 @@ switch ($action) {
 		break;
 	}
 
-	case 'voirNouveauRapport': {
+	case 'consulterNouveauxRapportsRegion': {
+		
+		$infoRapport = getInfoRapport($_GET['id']);
+		include("vues/v_consultationNouveauxRapportsRegion.php");
+		break;
+	}
+
+	case 'voirListeRapportRegion': {
 
 		$cp = getDepartement()['COL_CP'];
 		$nb = cpToTwoNb($cp);
@@ -38,8 +46,8 @@ switch ($action) {
 		$allCollab = getAllCollabRapport($_SESSION['matricule']);
 		$tabCollab = tableauDeCollab($allCollab);
 		$collabsMemeReg = getTableauCpAllColab($tabCollab, $lesDeps);
-		$res = getRapportMemeRegion($collabsMemeReg);
-		include("vues/v_consulterNewRapports.php");
+		$mesRapports = getRapportMemeRegion($collabsMemeReg);
+		include("vues/v_listeMesNouveauxRapports.php");
 		break;
 	}
 
