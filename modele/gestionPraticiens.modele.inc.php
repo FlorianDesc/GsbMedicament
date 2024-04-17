@@ -219,7 +219,6 @@ include_once 'bd.inc.php';
 
     function insertSpe($idPra, $spe){
         try{
-            var_dump($idPra, $spe);
             $monPdo = connexionPDO();
             $req = 'INSERT INTO posseder (PRA_NUM, SPE_CODE) VALUES (:PRA_NUM, :SPE_CODE)';
             $res = $monPdo->prepare($req);

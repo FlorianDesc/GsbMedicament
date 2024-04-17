@@ -18,14 +18,13 @@ function getMoisDate($matricule){
 
 }
 
-function getAllInformationRapportVisite($matricule){
+function getAllInformationRapportVisite($numrapport){
 
     try{
         $monPdo = connexionPDO();
-        $req = 'SELECT rapport_visite.RAP_NUM, rapport_visite.COL_MATRICULE, rapport_visite.PRA_NUM, praticien.PRA_NOM ,rapport_visite.RAP_DATE, rapport_visite.MED_DEPOTLEGAL_Presente1, rapport_visite.MED_DEPOTLEGAL_Presente2
+        $req = 'SELECT * 
         FROM `rapport_visite` 
-        INNER JOIN praticien ON praticien.PRA_NUM = rapport_visite.PRA_NUM
-        WHERE COL_MATRICULE = "'.$matricule.'"';
+        WHERE RAP_NUM = "'.$numrapport.'"';
         $res = $monPdo->query($req);
         $result = $res->fetch();    
         return $result;
@@ -56,10 +55,29 @@ catch (PDOException $e){
 }
 }
 
-function getIntervalleDateRapport($du,$au){
+function getReportDate(){
+    try{
+              $monPdo = connexionPDO();
+              $dateDeb=$_POST['dudate'];
+              $dateFin=$_POST['audate'];
+              $req = 'SELECT * FROM rapport_visite WHERE RAP_DATE between "'.$dateDeb.'" and "'.$dateFin.'" ORDER BY `RAP_DATE`';
+              $res = $monPdo->query($req);
+              $result = $res->fetchAll();
+              return $result;
+          } 
+
+          catch (PDOException $e){
+              print "Erreur !: " . $e->getMessage();
+              die();
+          }
+
+      }
+
+function getAllNomCollaborateurs(){
+
     try{
         $monPdo = connexionPDO();
-        $req = 'SELECT `COL_MATRICULE`,`RAP_NUM`,`PRA_NUM`,`RAP_DATE`,`RAP_BILAN`,`RAP_MOTIF_AUTRE`,`DATE_VISITE` FROM `rapport_visite` WHERE `RAP_DATE` BETWEEN "'.$du.'" AND "'.$au.'"';
+        $req = 'SELECT  COL_MATRICULE, COL_NOM, COL_PRENOM FROM collaborateur';
         $res = $monPdo->query($req);
         $result = $res->fetchAll();
         return $result;

@@ -37,7 +37,6 @@ switch ($action) {
 		if($specialites[0] == ''){
 			unset($specialites[0]);
 		}
-		var_dump($specialites);
 		foreach($specialites as $spe){
 			insertSpe($_GET['idpra'], $spe);
 		}
